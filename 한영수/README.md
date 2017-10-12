@@ -1,13 +1,11 @@
 ## DeproMeet Swift study
 
-WEAK1
-===
+#### WEAK1
+
 
 디프만 Swift Study를 시작해볼까요?   
 디프만? [디프만 홈페이지 바로가기](http://www.depromeet.com/)
 
-
-Swift만의 기본적이지만 특이한 문법을 조금 알아봅시다
 
 ### 자료형 선언 
 
