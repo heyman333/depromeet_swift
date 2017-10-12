@@ -9,7 +9,7 @@ WEAK1
 
 Swift만의 기본적이지만 특이한 문법을 조금 알아봅시다
 
-###자료형 선언 
+### 자료형 선언 
 
 ```swift
 var a = 'foo' // 변수를 담을 수 있죠?
@@ -23,7 +23,7 @@ let b: String = "constant" // 문자열은 ' '도 되고 " " 도 됩니다. ;은
 3. 세미콜론은 ``option``입니다   
 4. 타입어노테이션도 사실 ``option``이지만 일치하지 않은 타입을 할당하려고 하는 경우 ``warning``을 준다는 점에서 활용하면 좋을 것 같네요
 
-###문자열삽입(Interpolate) 
+### 문자열삽입(Interpolate) 
 
 ```swift
 let name: String = "youngsoo"
