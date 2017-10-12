@@ -70,7 +70,7 @@ case 300...307:
 case 400...417:
     errMSG += "Client error. 4.xx"
 case let unKnownCode where (unKnownCode >= 200 && unKnownCode < 300)
-    || unKnownCode > 505 :
+    								|| unKnownCode > 505 :  
     errMSG += "\(unKnownCode) is not a known error code"
 default:
     errMSG += "ha.. I really don't know the error"
@@ -96,7 +96,7 @@ case 300...307:
 case 400...417:
     errMSG += "Client error. 4.xx"
 case let unKnownCode where (unKnownCode >= 200 && unKnownCode < 300)
-    || unKnownCode > 505 :
+    								|| unKnownCode > 505 :
     errMSG += "\(unKnownCode) is not a known error code"
 default:
     errMSG += "ha.. I really don't know the error"
@@ -125,7 +125,7 @@ error.message
 
 ```
 
-###옵셔널
+### 옵셔널
 
 옵셔널은 매우 안전지향적인 스위프트만의 문법이라고 할 수 있습니다.
 옵셔널이 뭔지 간단하게 얘기하자면 이 인스턴스는 "`nil`이 될 수 있어!" 라고 말하는 겁니다
