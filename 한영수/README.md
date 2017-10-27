@@ -1,3 +1,4 @@
+
 ## DeProMeet Swift study
 
 #### WEAK1
@@ -141,6 +142,7 @@ print(errorCodeString) // Optional("404")
 `?` 이게 뭐지? 이렇게 옵셔널을 설정해 줄떄는 변수나 상수 뒤에 `?`를 적어줍니다
 `print(errorCodeString)`를 통해 로그를 보니 `Optional("404")`라는 이상한 걸 보여주네요
 
+
 그렇다면 다음처럼 errorCodeString을 주석 처리 해볼까요?
 
 ```swift
@@ -214,9 +216,5 @@ let description = errorDescription ?? "No error"
 ```
 `??`왼쪽에는 옵셔널 인스턴스가 오른쪽엔 비 옵셔널 인스턴스가 와야됩니다
 보시다시피 `??`왼쪽(옵셔널) 인스턴스가 nil이 아니라면 옵셔널이 리턴되고 nil이라면 오른쪽 인스턴스(비 옵셔널)가 리턴 되겠네요
-
-
-
-
 
 
