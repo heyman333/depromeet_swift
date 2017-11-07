@@ -1,7 +1,6 @@
 
-## DeProMeet Swift study
 
-#### WEAK1
+## WEEK1
 
 
 디프만 Swift Study를 시작해볼까요?   
@@ -217,4 +216,82 @@ let description = errorDescription ?? "No error"
 `??`왼쪽에는 옵셔널 인스턴스가 오른쪽엔 비 옵셔널 인스턴스가 와야됩니다
 보시다시피 `??`왼쪽(옵셔널) 인스턴스가 nil이 아니라면 옵셔널이 리턴되고 nil이라면 오른쪽 인스턴스(비 옵셔널)가 리턴 되겠네요
 
+## WEEK2
 
+### 배열 
+개발하면서 쓸 수 밖에 없는 배열이네요.
+스위프트에서 배열은 다음의 모양입니다.
+
+```swift
+var bucketList: [string] = ["clime Mt. BackDoo"]
+// 또는
+var bucketList = ["clime Mt. BackDoo"]
+
+```
+배열에 새로운 원소를 추가 하고 싶다면?
+
+```swift
+var bucketList: [string] = ["clime Mt. BackDoo"]
+// 또는
+var bucketList = ["clime Mt. BackDoo"]
+buckerList.append("World tour!")
+
+```
+위처럼 `append(_:)`메서드를 이용해서 추가하면 됩니다.최소 배열이 string 배열로 만들어 졌으니 새로운 배열도 역시 string으로 들어가야겠죠?
+
+추가하는 걸 배웠으니 삭제하는것도 알아아죠
+
+```swift
+var bucketList = ["Climb Mt. BackDoo"]
+bucketList.append("World Tour!")
+bucketList.append("Master Swift!")
+
+bucketList.remove(at: 2)
+// ["Climb Mt. BackDoo", "World Tour!"]
+
+```
+이처럼 `remove(at: index)`를 이용해서 index에 해당하는 원소를 지울 수 있네요.
+
+```swift
+var bucketList = ["Climb Mt. BackDoo"]
+bucketList.append("World Tour!")
+
+bucketList[1] += " first country is america"
+// ["Climb Mt. BackDoo", "World Tour! first country is america"]
+```
+
+이런식으로 원소에 `+=` 서브스크립트를 사용해서 각 원소에 추가된 정보를 입력 할 수도 있습니다.
+
+배열에서 어떠한 나열되는 데이터를 여러개 추가 하고 싶으면 어떻게 할까요?
+`append()`를 여러번 호출해서 원소를 추가 할 수도 있곘지만 다음처럼 `for-in` 루프를 사용하면 편합니다.
+
+```swift
+var bucketList = ["Climb Mt. BackDoo"]
+bucketList.append("World Tour!")
+
+bucketList[1] += " first country is america"
+
+var newItems = ["master Swift", "master computer Science", "make gf"]
+
+for item in newItems {
+    bucketList.append(item)
+}
+// ["Climb Mt. BackDoo", "World Tour! first country is america", "master Swift", "master computer Science", "make gf"]
+
+```
+
+위의 방법대로라면 새로 추가되는 원소는 계속 마지막 인덱스로만 추가가 가능하다.
+하지만 기존 원소 중간에 새로운 데이터를 추가 하고 싶다면 `insert(_:at:)`메소드를 사용합니다.
+
+```swift
+var bucketList = ["Climb Mt. BackDoo"]
+bucketList.append("World Tour!")
+
+bucketList[1] += " first country is america"
+bucketList.insert("make Much money!", at: 0)
+// ["make Much money!", "Climb Mt. BackDoo", "World Tour! first country is america"]
+
+```
+자바스크립트에서는 상수로 선언된 배열도 `push()`나 `pop()`을 통해서 배열의 원소를 컨트롤 할 수 있지만, swift에서는 배열이 `let`으로 선언 돼 있다면 배열을 변경할 수 없다.
+
+> cannot use mutating member on immutable value: 'bucketList' is a 'let' constant
