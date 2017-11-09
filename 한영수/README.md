@@ -280,7 +280,7 @@ for item in newItems {
 
 ```
 
-위의 방법대로라면 새로 추가되는 원소는 계속 마지막 인덱스로만 추가가 가능하다.
+위의 방법대로라면 새로 추가되는 원소는 계속 마지막 인덱스로만 추가가 가능하죠
 하지만 기존 원소 중간에 새로운 데이터를 추가 하고 싶다면 `insert(_:at:)`메소드를 사용합니다.
 
 ```swift
@@ -292,6 +292,86 @@ bucketList.insert("make Much money!", at: 0)
 // ["make Much money!", "Climb Mt. BackDoo", "World Tour! first country is america"]
 
 ```
-자바스크립트에서는 상수로 선언된 배열도 `push()`나 `pop()`을 통해서 배열의 원소를 컨트롤 할 수 있지만, swift에서는 배열이 `let`으로 선언 돼 있다면 배열을 변경할 수 없다.
+자바스크립트에서는 상수로 선언된 배열도 `push()`나 `pop()`을 통해서 배열의 원소를 컨트롤 할 수 있지만, swift에서는 배열이 `let`으로 선언 돼 있다면 배열을 변경할 수 없네요
 
 > cannot use mutating member on immutable value: 'bucketList' is a 'let' constant
+
+
+### 딕셔너리
+
+딕셔너리의 키값은 반드시 `hashable`해야합니다. 즉 저마다 모든 key값은 하나밖에 없어야하는거죠. 스위프트의 기본타인 `String` `Int` `Float` `Double` `Bool` 등은 모두 해시가능하기 때문에 딕셔너리의 키값으로 사용 될 수 있습니다.
+
+```swift
+var dict1: Dictionary<String,Double> = [:]
+var dict2 = Dictionary<String,Double>()
+var dict3: [String:Double] = [:]
+var dict4 = [String:Double]()
+
+```
+위의 코드처럼 딕셔너리 인스턴스를 생성하는 방법은 다양합니다.
+`[:]`코드는 리터럴 문법 구조를 이용해서 딕셔너리 타입의 빈 인스턴스를 생성하는 것이고, `()`문법 구조는 딕셔너리 타입의 기본 초기화 방식을 사용해서 인스터스를 만드는거죠
+
+다음은 실제로 값을 만들어 대입하는 방법입니다
+
+```swift
+var movieRating = ["범죄도시": 8.4, "범죄와의 전쟁": 9.5, "어벤져스3": 9.9]
+
+```
+실제로 딕셔너리 데이터를 만들고 나서 이런식으로 딕셔너리 인스턴스를 다룰 수 있습니다
+
+```swift
+var movieRating = ["범죄도시": 8.4, "범죄와의 전쟁": 9.5, "어벤져스3": 9.9]
+print("I have rated \(movieRating.count) movies")
+// I have rated 3 movies
+var avengersRating = movieRating["어벤져스3"]
+print(avengetsRating)
+// Optional(9.9000000000000004)
+
+```
+
+위의 avengersRating을 print 해보면 `optional` 값이 나온걸 확인 할 수 있네요.
+실제로 `var avengetsRating: Double?` 이런식으로 `optional`값을 리턴하는데, 이는 실제로 해당하는 `key`값과 매칭되는 `value`가 없을 수도(nil) 있기 때문이죠.
+
+딕셔너리의 어떤 값(value)을 수정해 주고 싶다면 아래의 방법을 사용 할 수 있습니다.
+
+```swift
+var movieRating = ["범죄도시": 8.4, "범죄와의 전쟁": 9.5, "어벤져스3": 9.9]
+
+movieRating["범죄와의 전쟁"] = 10.0
+movieRating.updateValue(9.0, forKey: "범죄도시")
+
+```
+
+여기서 __주의__ 할 점이 있습니다. `updateValue(_:forKey:)` 메서드는 변경 되기 전의 `value` 옵셔널을 리턴합니다.
+
+```swift
+var movieRating = ["범죄도시": 8.4, "범죄와의 전쟁": 9.5, "어벤져스3": 9.9]
+var oldRate = movieRating.updateValue(9.0, forKey: "범죄도시")
+print(oldRate)
+// Optional(8.4000000000000004)
+
+```
+
+값을 업데이트 하는 방법을 알았으니, **추가** 하거나 **제거** 하는 방법을 알아봅시다
+
+__추가__
+
+```swift
+movieRating["토르-라그나로크"] = 8.6
+movieRating.updateValue(3.0, forKey: "디워") // nil
+
+```
+새로운 key에 대입연산자를 통해 새로운 `value`를 넣어주던가, 새로운 key에 `updateValue(_:forKey:)`를 통해 새로운 값을 + 해줄 수 있습니다
+
+__제거__
+
+```swift
+movieRating.removeValue(forKey: "토르-라그나로크")
+movieRating["범죄와의 전쟁"] = nil
+
+```
+제거는 위처럼 `removeValue(forKey:)`메서드를 사용하던가, 실제 key에 `nil`을 대입함으로써 값을 제거 할 수 있습니다.
+
+딕셔너리는 `루프`도 적용 가능합니다. 다음 예제를 볼까요
+
+
