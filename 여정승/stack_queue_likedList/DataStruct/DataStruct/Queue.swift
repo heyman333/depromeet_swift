@@ -23,7 +23,8 @@ public struct Queue<T> {
         return queue.count == 0
     }
     
-    var count : Int {
+    var count : Int { 
         return self.queue.count
     }
+    
 }
